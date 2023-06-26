@@ -1,0 +1,5 @@
+.modal.hide.in{
+    display:inherit !important;
+    left: auto;
+    max-height: calc !important;
+}
