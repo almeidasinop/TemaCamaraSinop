@@ -1,0 +1,44 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<div id="ultimovideo"></div>
+		</div>
+		<div class="col-md-4" style=" padding-left: 0px;!important;">
+			<script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="https://cdn.lightwidget.com/widgets/b6124e89a1235185ad25160080939695.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden; padding-left: 0px!important;"></iframe>
+
+		</div>
+	</div>
+</div>
+<script src="https://cdn.lightwidget.com/widgets/lightwidget.js"> 
+</script>
+<script type="text/javascript">
+          $(document).ready(
+      function () {
+          var key = 'AIzaSyDPoP0SlgI54oCCvyA0wuZ3PfDtXYYZH2U';
+          var chanelId = 'UC2Dyzo2ObUcp2FXjA7g5fpg';
+          var url = 'https://www.googleapis.com/youtube/v3/search';
+  
+          var options = {
+              key:key,
+              part:'snippet',
+              channelId:chanelId,
+              order:'date'
+          }
+  
+          function loadVideos() {
+              $.getJSON(url, options, function (data) {
+                  //console.log(data)
+                  ultimoVideo(data.items[0].id.videoId)
+              })
+          }
+  
+          function ultimoVideo(id) {
+              $('#ultimovideo').html(`
+              <iframe height='390px' width='100%' padding-right: '2px' src='https://www.youtube.com/embed/${id}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>
+              `);
+          }
+  
+          loadVideos();
+      }
+  );
+</script>
